@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+.form-user{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 50px;
+  /* align-items: center; */
+  /* width: 500px; */
+}

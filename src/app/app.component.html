@@ -1,0 +1,55 @@
+{{ _message | async}}
+
+<button (click)="spanishMessage()">Spanish</button>
+<button (click)="frenchMessage()">French</button>
+
+
+<div *ngIf="_post | async as p">
+  <h2>{{ p.text }}</h2>
+  <h4>{{ p.likes }}</h4>
+</div>
+
+<button (click)="upVotePost()">Up</button>
+<button (click)="downVotePost()">Down</button>
+<button (click)="resetPost()">Reset</button>
+
+<div class="form-user">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nome</label>
+      <input (keyup)="usuario.name = $event.target.value" class="form-control" aria-describedby="emailHelp" placeholder="Nome">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Idade</label>
+      <input type="email" (keyup)="usuario.age = $event.target.value"  class="form-control" aria-describedby="emailHelp" placeholder="Idade">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" class="form-control" (keyup)="usuario.login = $event.target.value" aria-describedby="emailHelp" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" placeholder="Password" (keyup)="usuario.password = $event.target.value">
+    </div>
+    <button class="btn btn-primary" (click)="newUser(usuario)">Novo Usuario!</button>
+</div>
+<button class="btn btn-primary" (click)="clearList()">Limpar Lista</button>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Idade</th>
+        <th scope="col">Email</th>
+        <th scope="col">Pass</th>
+        <th scope="col"> X </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let puser of _user | async">
+        <th>{{puser.name}}</th>
+        <td>{{puser.age}}</td>
+        <td>{{puser.login}}</td>
+        <td>{{puser.password}}</td>
+        <td><span (click)="removeUser(puser)">X</span></td>
+      </tr>
+    </tbody>
+  </table>
